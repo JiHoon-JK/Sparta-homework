@@ -1,0 +1,47 @@
+ * {
+  font-family: 'Noto Serif KR', serif;
+}
+
+.allcontents {
+  width: 500px;
+  margin: 50px auto 0 auto;
+  background-color: #d3cec8;
+  border: 3px double #9a8e80;
+  padding: 10PX;
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.myletter > h1 {
+  font-weight: bold;
+}
+
+.myletter > h5 {
+  text-decoration: underline;
+}
+
+.myphoto {
+
+  text-align: center;
+  background-image: url('https://cdn.pixabay.com/photo/2016/11/25/21/03/analog-1859402_960_720.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 480px;
+  height: 400px;
+  border-radius: 10px;
+
+}
+
+.mybtn{
+  margin: 30px 0px 30px 0px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
