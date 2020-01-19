@@ -9,6 +9,45 @@
   <!-- mystyle 으로 분리 -->
   <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script>
+    function order() {
+      let name = $("#ip_customer_name").val();
+      let amount = $("#customer_amount").val();
+      let address = $("#customer_address").val();
+      let phonenumber = $("#customer_phonenumber").val();
+
+      if (name == ""){
+        alert("이름을 입력해주세요");
+      } else{
+
+      }
+
+      if (amount == "-- 수량을 선택하세요 --") {
+        alert("수량을 입력하세요")
+      } else{
+
+      }
+      if (address == "") {
+        alert("주소를 입력하세요")
+      } else{
+
+      }
+      if (phonenumber == "") {
+        alert("전화번호를 입력하세요")
+      } else{
+
+      }
+
+    }
+    // 문제의 구간 시작 (input입력값 하단으로 끌어오기)
+    function ordermenu() {
+      let name = $('#ip_customer_name').val();
+      $('#customer_name').append(name);
+    }
+  </script>
+
 </head>
 <body>
 
@@ -21,19 +60,21 @@
       <h6> 이 카메라는 최초의 카메라를 만든 프랑스 화가 루이 쟈크 망데 다게르(Louis Jacques Mande Daguerre)의 카메라 제작원리와 2020년의 기술력으로 촬영자가 원하는 아날로그 분위기를 좀 더 편하게 표현할 수 있는 카메라입니다. '최초의 카메라' 라는 명예와 함께 자신의 열정을 창작물로 담아내고 싶다면 인생에 있어 좋은 투자가 될 것이라 '스파르타 카메라' 는 자부합니다.</h6> </div>
 
       <!-- 주문자 이름 -->
+      
       <div class="input-group input-group-sm mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">주문자 이름</span>
         </div>
-        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="ip_customer_name">
+        <ul id="customer_name"></ul>
       </div>
       <!-- 수량 -->
       <div class="input-group input-group-sm mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">수 량</span>
         </div>
-        <select class="form-control">
-          <option selected>-- 수량을 선택하세요 --</option>
+        <select class="form-control" id="customer_amount">
+          <option selected val="">-- 수량을 선택하세요 --</option>
           <option>1개</option>
           <option>2개</option>
           <option>3개</option>
@@ -47,24 +88,47 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">주 소</span>
         </div>
-        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="customer_address">
       </div>
       <!-- 전화번호 -->
       <div class="input-group input-group-sm mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">전화번호</span>
         </div>
-        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="customer_phonenumber">
       </div>
+      
+
       <!-- 주문하기 버튼 -->
       <div class="mybtn">
-        <button type="button" class="btn btn-primary btn-lg">
+        <button type="button" class="btn btn-primary btn-lg" onclick="order()" onclick="ordermenu()">
           주문하기
         </button>
       </div>
 
     </div>
 
+    <!-- 정보 입력 메뉴바 -->
+    <div class="mymenubar"> 
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="bar-name">이름</a>
+        </li>
+        <li class="nav-item">
+          <a class="bar-amount">수량</a>
+        </li>
+        <li class="nav-item">
+          <a class="bar-address">주소</a>
+        </li>
+        <li class="nav-item">
+          <a class="bar-phonenumber">전화번호</a>
+        </li>
+      </ul>
+    </div>
     
+    <div>
+      <!-- 입력된 정보 저장 공간 -->
+    </div>
+
   </body>
   </html>

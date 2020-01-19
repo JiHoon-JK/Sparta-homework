@@ -45,3 +45,12 @@
   align-items: center;
   justify-content: center;
 }
+.mymenubar{
+  width: 500px;
+  margin : 30px auto;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+}
+.nav-item{
+  padding: 20px 40px 20px 40px;
+}
