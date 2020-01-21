@@ -45,11 +45,14 @@
   align-items: center;
   justify-content: center;
 }
+.underinfo{
+  width: 500px;
+  margin : 30px auto;
+  height: 40px;
+}
 .mymenubar {
   font-weight: bold;
   font-size: 17px;
-  width: 500px;
-  margin : 30px auto;
   border-top: 3px solid black;
   border-bottom: 3px solid black;
 }
@@ -57,7 +60,6 @@
   padding: 20px 40px 20px 40px;
 }
 .input_menu_bar_append{
-  width: 500px;
-  margin : 30px auto;
+  float: left;
   border-bottom: 2px dashed black;
 }
