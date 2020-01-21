@@ -2,7 +2,7 @@
 <head>
 
   <!-- html 이름 -->
-  <title>2주차 스파르타 코딩클럽 과제</title>
+  <title>Sparta Camera Mall</title>
   <!-- 구글 폰트 css -->
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
   <!-- bootstrap css -->
@@ -49,21 +49,15 @@
       if (!regExp.test(phonenumber)) {
         alert("휴대폰번호 입력 형식이 틀립니다. 010-0000-0000으로 입력해주세요");
       } else {
-
+        return false
       }
 
-      let ordername = $("#name").val();
-      let orderamount = $("#amount").val();
-      let orderaddress = $("#address").val();
-      let orderphonenumber = $("#phonenumber").val();
+      let ordername= '<li>' + name + '</li>';
+      let orderamount= '<li>' + amount + '</li>';
+      let orderaddress= '<li>' + address + '</li>';
+      let orderphonenumber= '<li>' + phonenumber + '</li>';
 
-
-      let ordername_li = '<li>' + ordername + '</li>';
-      let orderamount_li = '<li>' + orderamount + '</li>';
-      let orderaddress_li = '<li>' + orderaddress + '</li>';
-      let orderphonenumber_li = '<li>' + orderphonenumber + '</li>';
-
-      let order_html = $("#ordername_li").val() + $("#orderamount_li").val() + $("#orderaddress_li").val() + $("#orderphonenumber_li").val() ;
+      let order_html = '<ul>' + ordername + orderamount + orderaddress + orderphonenumber + '<ul>'
       
       $("#input_menu_bar_append").append(order_html);
       
