@@ -49,9 +49,8 @@
       if (!regExp.test(phonenumber)) {
         alert("휴대폰번호 입력 형식이 틀립니다. 010-0000-0000으로 입력해주세요");
       } else {
-        return alert("주문완료!");
-      }
 
+      }
 
       let ordername = $("#name").val();
       let orderamount = $("#amount").val();
@@ -68,6 +67,7 @@
       
       $("#input_menu_bar_append").append(order_html);
       
+      alert("주문완료!")
     }
 
   </script>
