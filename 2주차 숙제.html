@@ -1,7 +1,8 @@
 <html>
 <head>
+
   <!-- html 이름 -->
-  <title>1주차 스파르타 코딩클럽 과제</title>
+  <title>2주차 스파르타 코딩클럽 과제</title>
   <!-- 구글 폰트 css -->
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
   <!-- bootstrap css -->
@@ -20,35 +21,56 @@
       let address = $("#ip_customer_address").val();
       let phonenumber = $("#ip_customer_phonenumber").val();
 
-      if (name == ""){
-        return alert("이름을 입력해주세요");
-      }
+      // 전화번호 체크 정규식
+      let regExp =  /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
+      
+      if (name == ""){
+        alert("이름을 입력해주세요");
+        $("#ip_customer_name").focus();
+        return false
+      }
       if (amount == "-- 수량을 선택하세요 --") {
-        return alert("수량을 입력하세요");
+        alert("수량을 입력하세요");
+        $("#ip_customer_amount").focus();
+        return false
       }
       if (address == "") {
-        return alert("주소를 입력하세요");
+        alert("주소를 입력하세요");
+        $("#ip_customer_address").focus();
+        return false
       } 
       if (phonenumber == "") {
-        return alert("전화번호를 입력하세요");
+        alert("전화번호를 입력하세요");
+        $("#ip_customer_phonenumber").focus();
+        return false
       } 
 
+      if (!regExp.test(phonenumber)) {
+        alert("휴대폰번호 입력 형식이 틀립니다. 010-0000-0000으로 입력해주세요");
+      } else {
+        return alert("주문완료!");
+      }
 
-    // 문제의 구간 시작 (input입력값 하단으로 끌어오기)
-    function ordermenu() {
-      let ordername = $("#name").html();
+
+      let ordername = $("#name").val();
+      let orderamount = $("#amount").val();
+      let orderaddress = $("#address").val();
+      let orderphonenumber = $("#phonenumber").val();
+
+
+      let ordername_li = '<li>' + ordername + '</li>';
+      let orderamount_li = '<li>' + orderamount + '</li>';
+      let orderaddress_li = '<li>' + orderaddress + '</li>';
+      let orderphonenumber_li = '<li>' + orderphonenumber + '</li>';
+
+      let order_html = $("#ordername_li").val() + $("#orderamount_li").val() + $("#orderaddress_li").val() + $("#orderphonenumber_li").val() ;
       
-      let orderamount = $("#amount").html();
-      
-      let orderaddress = $("#address").html();
-      
-      let orderphonenumber = $("#phonenumber").html();
+      $("#input_menu_bar_append").append(order_html);
       
     }
-  }
 
-</script>
+  </script>
 
 </head>
 <body>
@@ -97,7 +119,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-sm">전화번호</span>
         </div>
-        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="ip_customer_phonenumber">
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="ip_customer_phonenumber" placeholder=" - 넣어서 적어주세요">
       </div>
 
 
@@ -129,23 +151,23 @@
     </div>
     <!-- 정보입력공간 -->
 
-    <div id="input_menu_bar">
+    <div class ="input_menu_bar_append">
       <ul class="nav justify-content-center">
         <li class="nav-item">
-          <a class="bar-name"id="ordername"></a>
+          <a class="bar-name"></a>
         </li>
         <li class="nav-item">
-          <a class="bar-amount" id="orderamount"></a>
+          <a class="bar-amount"></a>
         </li>
         <li class="nav-item">
-          <a class="bar-address" id="orderaddress"></a>
+          <a class="bar-address"></a>
         </li>
         <li class="nav-item">
-          <a class="bar-phonenumber" id="orderphonenumber"></a>
+          <a class="bar-phonenumber"></a>
         </li>
       </ul>
     </div>
 
-<!-- "정보입력공간에 script를 넣어보기!" -->
+    
   </body>
   </html>
