@@ -47,10 +47,12 @@
 }
 table, th, td {
   background-color: #d3cec8;
-  
   margin: 50px auto 0 auto;
 }
-
-table {
-  width: 500px;
+th{
+  border-style: bold;
+  border-top: 3px solid #9a8e80;
+  border-bottom: 3px solid #9a8e80;
+  width: 125px;
+  height: 100px;
 }
