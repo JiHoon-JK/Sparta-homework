@@ -59,11 +59,12 @@
       
 
       let order_html = 
+      '<tr>' +
       '<td>' + ordername + '</td>' + 
       '<td>'+ orderamount +  '</td>' + 
       '<td>'+ orderaddress + '</td>' + 
       '<td>'+ orderphonenumber + '</td>' 
-      
+      + '</tr>'
 
       $("#input_menu_bar_append").append(order_html);
       
@@ -140,11 +141,8 @@
           <th>전화번호</th>
         </tr>
       </thead>
-      <tbody>
-        <tr  id="input_menu_bar_append">
-
-        </tr> 
-
+      <tbody id="input_menu_bar_append">
+        
       </tbody>
     </table>
 
