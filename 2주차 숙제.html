@@ -58,8 +58,12 @@
 
       
 
-      let order_html = '<ul>' + ordername + orderamount + orderaddress + orderphonenumber + '<ul>'
-      
+      let order_html = 
+      '<tr>' + '<td>' + ordername + '<td>' +
+      orderamount + '<td>' + 
+      orderaddress + '<td>' + 
+      orderphonenumber + '<td>' + '<tr>'
+
       $("#input_menu_bar_append").append(order_html);
       
       
@@ -126,31 +130,18 @@
       </div>
 
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th>이름</th>
+          <th>수량</th>
+          <th>주소</th>
+          <th>전화번호</th>
+        </tr>
+      </thead>
+      <tbody id="input_menu_bar_append">
 
-    <!-- 정보 입력 메뉴바 -->
-    <div class= underinfo>
-      <div class="mymenubar"> 
-        <ul class="nav justify-content-center">
-          <li class="nav-item">
-            <a>이름</a>
-          </li>
-          <li class="nav-item">
-            <a>수량</a>
-          </li>
-          <li class="nav-item">
-            <a>주소</a>
-          </li>
-          <li class="nav-item">
-            <a>전화번호</a>
-          </li>
-        </ul>
-      </div>
-      <!-- 정보입력공간 -->
-
-      <div id ="input_menu_bar_append">
-
-      </div>
-    </div>
-
+      </tbody>
+    </table>
   </body>
   </html>

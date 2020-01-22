@@ -45,21 +45,12 @@
   align-items: center;
   justify-content: center;
 }
-.underinfo{
+table, th, td {
+  background-color: #d3cec8;
+  
+  margin: 50px auto 0 auto;
+}
+
+table {
   width: 500px;
-  margin : 30px auto;
-  height: 40px;
-}
-.mymenubar {
-  font-weight: bold;
-  font-size: 17px;
-  border-top: 3px solid black;
-  border-bottom: 3px solid black;
-}
-.nav-item{
-  padding: 20px 40px 20px 40px;
-}
-.input_menu_bar_append{
-  float: left;
-  border-bottom: 2px dashed black;
 }
