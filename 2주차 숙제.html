@@ -52,6 +52,8 @@
 
       if (!regExp.test(phonenumber)) {
         alert("휴대폰번호 입력 형식이 틀립니다. 010-0000-0000으로 입력해주세요");
+        $("#ip_customer_phonenumber").focus();
+        return false
       } else {
         alert("주문완료!")
       }
@@ -142,7 +144,7 @@
         </tr>
       </thead>
       <tbody id="input_menu_bar_append">
-        
+
       </tbody>
     </table>
 
