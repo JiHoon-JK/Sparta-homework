@@ -1,4 +1,4 @@
-<html>
+<html lang="kr">
 <head>
 
   <!-- html 이름 -->
@@ -7,102 +7,83 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif+KR&display=swap" rel="stylesheet">
   <!-- bootstrap css -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- mystyle 으로 분리 -->
+  <!-- mystyle 으로 style.css 분리 -->
   <link rel = "stylesheet" type = "text/css" href = "mystyle.css">
-
+  <!-- jquery 추가 -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <script type="text/javascript">
-    function CheckPhone(p){
-    // 전화번호 체크 정규식
-    let regExp =  /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
-    return regExp.test(p);
-  }
+    function order() {
+      let name = $("#ip_customer_name").val();
+      let count = $("#ip_customer_count").val();
+      let address = $("#ip_customer_address").val();
+      let phone = $("#ip_customer_phone").val();
 
+      let regExp =  /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
 
-  function order() {
-    let name = $("#ip_customer_name").val();
-    let count = $("#ip_customer_count").val();
-    let address = $("#ip_customer_address").val();
-    let phone = $("#ip_customer_phone").val();
-
-    if (name == ""){
-      alert("이름을 입력해주세요");
-      $("#ip_customer_name").focus();
-      return
-    }
-    else if (count == "-- 수량을 선택하세요 --") {
-      alert("수량을 입력하세요");
-      $("#ip_customer_count").focus();
-      return
-    }
-    else if (address == "") {
-      alert("주소를 입력하세요");
-      $("#ip_customer_address").focus();
-      return
-    } 
-    else if (phone == "") {
-      alert("전화번호를 입력하세요");
-      $("#ip_customer_phone").focus();
-      return
-    } 
-    else if (!CheckPhone(phone)){
-      alert("휴대폰번호 입력 형식이 틀립니다. 010-0000-0000으로 입력해주세요")
-      return
-    }
-
-
-    $.ajax({
-      type: "POST",
-      url: "http://spartacodingclub.shop/order",
-      data : {},
-      success: function(response){
-        if (response['result'] = "success") {
-          alert("주문완료!");
-          window.location.reload();
-        }
+      if (name == ""){
+        alert("이름을 입력해주세요");
+        $("#ip_customer_name").focus();
+        return false;
       }
-    }) 
+      if (count == "") {
+        alert("수량을 입력하세요");
+        $("#ip_customer_count").focus();
+        return false;
+      }
+      if (address == "") {
+        alert("주소를 입력하세요");
+        $("#ip_customer_address").focus();
+        return false;
+      } 
+      if (phone == "") {
+        alert("전화번호를 입력하세요");
+        $("#ip_customer_phone").focus();
+        return false;
+      } 
+      if (!regExp.test(phone)){
+        alert("휴대폰번호 입력 형식이 틀립니다. 010-0000-0000으로 입력해주세요")
+        return false;
+      } else{
+        alert("주문완료!")
+      }
+    }
 
-  }
+    $(document).ready(function()){
+      $('#input_menu_bar_append').html('');
+      bring_info();
+    };
 
-  $(document).ready(function(){
-    $('#input_menu_bar_append').html('');
-    listing();
-  });
-
-  function listing(){
-    $.ajax({
-      type: "GET",
-      url: "http://spartacodingclub.shop/order",
-      data: {}
-      success: function(response){
-        if (response['result']=="success") {
-          let order_list = response['orders'];
-          console.log(order_list);
-          for (let i=0; i<order_list.length; i++)
-          {
-            make_list(order_list[i]['name'],order_list[i]['count'],order_list[i]['address'],order_list[i]['phone'])
+    function bring_info(){
+      $.ajax({
+        type: "GET",
+        url: "http://spartacodingclub.shop/order",
+        data: {}
+        success: function(response){
+          if (response['result']=='success') {
+            let order_list = response['orders'];
+            for (let i=0; i < order_list.length; i++)
+            {
+              make_list(order_list[i]['name'],order_list[i]['count'],order_list[i]['address'],order_list[i]['phone'])
+            }
           }
-        }else{
-          alert("기사를 받아오지 못했습니다.");
         }
-      }
-    })
-  }
+      })
+    }
 
-  function make_list(list_name,list_count,list_address,list_phone){
-    let temp_html = '<tr>\
-    <td>'+list_name+'</td>\
-    <td>'+list_count+'</td>\
-    <td>'+list_address+'</td>\
-    <td>'+list_phone+'</td>\
-    </tr>';
-    $('#input_menu_bar_append').append(temp_html);
-  }
 
-</script>
+    function make_list(list_name,list_count,list_address,list_phone){
+      let temp_html = '<tr>\
+      <td>'+list_name+'</td>\
+      <td>'+list_count+'</td>\
+      <td>'+list_address+'</td>\
+      <td>'+list_phone+'</td>\
+      </tr>';
+      $('#input_menu_bar_append').append(temp_html);
+    }
+
+  </script>
 
 </head>
 <body>
@@ -173,7 +154,7 @@
         </tr>
       </thead>
       <tbody id="input_menu_bar_append">
-
+        <!-- 주문내역 넣을 자리 -->
       </tbody>
     </table>
 
