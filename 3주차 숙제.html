@@ -14,10 +14,10 @@
 
   <script>
 
-    $(document).ready(function()){
+    $(document).ready(function(){
       $('#table_body').html('');
       bring_info();
-    };
+    })
 
     function bring_info(){
       $.ajax({
@@ -54,11 +54,6 @@
 
       // 전화번호 체크 정규식
       let regExp =  /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
-
-      let ordername= '<li class="nav-item">'+ name + '</li>';
-      let orderamount= '<li class="nav-item">' + amount + '</li>';
-      let orderaddress= '<li class="nav-item">' + address + '</li>';
-      let orderphonenumber= '<li class="nav-item">' + phonenumber + '</li>';
       
       if (name == ""){
         alert("이름을 입력해주세요");
@@ -93,10 +88,10 @@
 
       let order_html = 
       '<tr>' +
-      '<td>' + ordername + '</td>' + 
-      '<td>'+ orderamount +  '</td>' + 
-      '<td>'+ orderaddress + '</td>' + 
-      '<td>'+ orderphonenumber + '</td>' 
+      '<td>' + name + '</td>' + 
+      '<td>'+ amount +  '</td>' + 
+      '<td>'+ address + '</td>' + 
+      '<td>'+ phonenumber + '</td>' 
       + '</tr>'
 
       $("#table_body").append(order_html);
