@@ -17,6 +17,7 @@ data = requests.get(url, headers=headers)
 soup = BeautifulSoup(data.text, 'html.parser')
 
 # select를 이용해서, tr들을 불러오기
+# #body-content > div.newest-list > div > table > tbody > tr:nth-child(1) > td.info > a.title.ellipsis (크롤링 하고 싶은 부분 셀렉터 추출)
 musics = soup.select('#body-content > div.newest-list > div > table > tbody > tr')
 
 rank = 1
@@ -29,11 +30,17 @@ music_data = {
 }
 
 for music in musics:
-    #크롤링으로,  이미지 가져오기
-    image = str(music.select_one('img').attrs['src']).replace('//','')
-    # strip() : 띄워쓰기 다 붙여주는 함수 -> 문자열일때만 사용가능 ('str'을 씌워줘야함)
+    # ( end = "" ) : 해당 결과값을 출력할 때 다음줄로 넘기지 않고 그 줄에 계속해서 출력하기 위해
+    #  rank 와 title을 붙여서 쓰기 위해서
+    print(rank, end='' + '등 : ')
     title = str(music.select_one('td.info > a.title.ellipsis').text).strip()
-    artist = music.select_one('a.artist.ellipsis').text
+    # strip() : 띄워쓰기 다 붙여주는 함수 -> 문자열일때만 사용가능 ('str'을 씌워줘야함)
+    print(title)
+    artist = '가수 : ' + music.select_one('a.artist.ellipsis').text
+    print(artist)
+    # 크롤링으로,  이미지 가져오기
+    image = '앨범 이미지 : ' + 'https:' + str(music.select_one('img').attrs['src']).replace('//', '')
+    print(image)
 
     music_data = {
         'rank': rank,
